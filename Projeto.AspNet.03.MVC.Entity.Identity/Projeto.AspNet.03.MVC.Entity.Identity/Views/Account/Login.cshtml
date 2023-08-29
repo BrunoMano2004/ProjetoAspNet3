@@ -1,0 +1,31 @@
+﻿@*
+    Definir a comunicação entre view e model
+*@
+
+@model Login
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+@* Definir a estrutura html necessária *@
+
+<h3>@ViewData["Title"]</h3>
+
+<form asp-action="Login" method="post">
+    <input type="hidden" asp-for="ReturnUrl" />
+
+    <div class="form-group">
+        <label asp-for="Email">Email</label>
+        <input type="email" asp-for="Email" class="form-control"/>
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password">Senha</label>
+        <input type="password" asp-for="Password" class="form-control"/>
+        <span asp-validation-for="Password"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Acessar</button>
+</form>

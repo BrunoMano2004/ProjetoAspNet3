@@ -1,0 +1,37 @@
+﻿@*
+    definir a relação entre view e model: 
+    ----- não há model específicio para esta view  -----
+*@
+
+@model string
+
+@{
+
+    ViewData["Title"] = " View com Auth";
+
+}
+
+@* definir a estrutura html necessária *@
+
+<h3 class="bg-info text-white">@ViewData["Title"]</h3>
+<br/>
+<br/>
+
+@Model
+
+<br/>
+<br/>
+<br/>
+
+@* recuperar o nome do usuário que está acessando a área restrita? *@
+
+@if (User?.Identity?.IsAuthenticated ?? false)
+{
+    @* referenciar o "link" de chamada da action Logout() no AccountController *@
+    <a asp-controller="Account"
+    asp-action="Logout"
+    class="btn btn-danger"
+    >
+    Sair
+    </a>
+}
